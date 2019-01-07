@@ -1,0 +1,39 @@
+<div class="sidebar">
+    <nav *ngIf="Karakterlijst">
+        <ul>
+    
+            <li *ngFor="let karakter of Karakterlijst; let i = index">
+                <div id="Karakter{{i}}" class="inactive" (click)="getKarakter(i)"><a [routerLink]=" ['./'] "> {{Karakterlijst[i].Name}} </a></div>
+              </li>
+    
+        </ul>
+      
+      </nav>
+</div>
+
+<div class="contentContainer" *ngIf="viewMode"> 
+    
+    <div class="title" id="karakterName"> {{Karakterlijst[activeKarakter].Name}}</div>
+    <div class="content" id="karakterType"> Type : {{Karakterlijst[activeKarakter].Type}} </div> 
+    <div class="content" id="karakterSubType">  SubType : {{Karakterlijst[activeKarakter].TypeTwo}}  </div> 
+    <div class="content" id="karakterEntry"> {{Karakterlijst[activeKarakter].Entry}} </div>
+    <button (click)="switchEditMode()" class="button" > Wijzigmodus </button>
+</div>
+
+
+<div class="contentContainer" *ngIf="editMode"> 
+        <div class="content"> Naam:  
+            <input type="text" value="{{Karakterlijst[activeKarakter].Name}}" class="contentInput">
+        </div>
+        <div class="content"> 
+            Type: <input type="text" value="{{Karakterlijst[activeKarakter].Type}}" class="contentInput">
+        </div>
+        <div class="content"> 
+            Subtype: <input type="text" value="{{Karakterlijst[activeKarakter].TypeTwo}}" class="contentInput"> 
+        </div>
+        <div class="content"> 
+            Beschrijving: <input type="text" value="{{Karakterlijst[activeKarakter].Entry}}" class="contentInput">
+        </div>
+        <button class="button" > Opslaan </button><button (click)="switchEditMode()" class="button"> Wijzigmodus sluiten </button>
+    </div>
+
