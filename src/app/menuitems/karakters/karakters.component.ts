@@ -52,7 +52,6 @@ export class KaraktersComponent implements OnInit {
 
       this.activeItem = document.getElementById("Karakter" + selectedKarakter)
       this.activeItem.className = "active"
-      console.log(selectedKarakter)
   }
 
   //kijk of de gebruiker wil aanpassen of niet, switch tussen edit en normal mode

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuitemService } from '../menuitemservice/menuitem.service';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,17 +9,35 @@ import { MenuitemService } from '../menuitemservice/menuitem.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private menuService : MenuitemService) { }
+  constructor(private menuService : MenuitemService, route: ActivatedRoute) {   
+   
+  }
+
 
   ngOnInit( ) {
   }
 
   ngAfterViewInit() {
-    this.getOverzicht()
+    this.initSidebar()
   }
 
+  
   private activeItem;
-  private sidebarEntry;
+  private sidebarEntry : string;
+
+  initSidebar() {
+    this.sidebarEntry = window.location.pathname
+    this.sidebarEntry = this.sidebarEntry.substring(1)
+    this.sidebarEntry = this.sidebarEntry.charAt(0).toUpperCase() + this.sidebarEntry.slice(1);
+    
+    console.log(this.sidebarEntry + " init active item")
+
+    this.activeItem = document.getElementById(this.sidebarEntry)
+    this.activeItem.className = "active"
+    
+
+  }
+
 
   getOverzicht() {
     if (this.activeItem != null) {
