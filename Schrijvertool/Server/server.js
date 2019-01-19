@@ -29,13 +29,8 @@ app.use(function(req, res, next) {
 
 app.get('/karakters', (req, res) => {
     
-var connection = mysql.createConnection({
-    host     : '127.0.0.1',
-    user     : 'root',
-    port     :  3306,
-    password : 'mysql',
-    database : 'Karakters'
-});
+    var connection = createMyConnection();
+    
     connection.connect()
 
     connection.query('select * from karakters', function (err, rows, fields) {
@@ -51,14 +46,10 @@ var connection = mysql.createConnection({
 
 app.post('/karakters/nieuw', (req, res) => {
     
-    var connection = mysql.createConnection({
-        host     : '127.0.0.1',
-        user     : 'root',
-        port     :  3306,
-        password : 'mysql',
-        database : 'Karakters'
-    });
-        connection.connect()
+    var connection = createMyConnection();
+    
+    connection.connect()
+
         console.log(req.body)
     
         connection.query('INSERT INTO Karakters set ?', req.body, function (err, rows, fields) {
