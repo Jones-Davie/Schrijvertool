@@ -1,0 +1,31 @@
+<div class="contentContainer" *ngIf="creationMode"> 
+    <form name="karakterSave" (ngSubmit)="saveKarakter()">
+        
+        <div class="contentFat"> Naam:  </div>
+        <div class="contentCreation">
+            <input  type="text" name="karakterNaam" [(ngModel)]="karakterModel.Naam" placeholder="Naam" class="contentInput">
+        </div>
+
+        <div class="contentFat"> Hoofdtype: </div>
+        <div class="contentCreation">
+            <input type="text" name="karakterHoofdType" [(ngModel)]="karakterModel.Hoofdtype" placeholder="Hoofdtype" class="contentInput">
+        </div>
+
+        <div class="contentFat"> Subtype: </div>
+        <div class="contentCreation">
+            <input type="text" name="karakterSubType" [(ngModel)]="karakterModel.Subtype" placeholder="Subtype" class="contentInput">
+        </div>
+
+        <div class="contentFat"> Beschrijving: </div>
+        <div class="contentCreation">    
+            <input type="text" name="karakterOmschrijving" [(ngModel)]="karakterModel.Omschrijving" placeholder="Omschrijving"class="contentInput">
+        </div>
+
+        <div class="contentFat"> Tags: </div>
+        <div class="contentCreation">
+            <input type="text" name="karakterTags" [(ngModel)]="karakterModel.Tags" placeholder="Tags"class="contentInput">
+        </div>
+
+        <button type="submit"> SUBMIT </button> 
+    </form>
+ </div>

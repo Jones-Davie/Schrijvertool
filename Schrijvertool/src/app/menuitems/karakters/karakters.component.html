@@ -1,0 +1,54 @@
+<div class="sidebar">
+    <nav *ngIf="Karakterlijst">
+        <ul>
+            <li>
+                <div id="nieuwKarakter" class="ïnactive" (click)="switchCreationMode()"><a [routerLink]="['./nieuw']"> Nieuw Karakter </a></div>
+            </li>
+            <li *ngFor="let karakter of Karakterlijst; let i = index">
+                <div id="Karakter{{i}}" class="inactive" (click)="getKarakter(i)"> <a [routerLink]=" ['./'] "> {{Karakterlijst[i].Naam}} </a></div>
+              </li>
+        </ul>
+      
+      </nav>
+</div>
+
+
+
+<div class="contentContainer" *ngIf="showKarakter">
+    <div *ngIf="viewMode"> 
+        
+        <div class="title"> {{Karakterlijst[activeKarakter].Naam}}</div>
+        <div class="content"> Type : {{Karakterlijst[activeKarakter].Hoofdtype}} </div> 
+        <div class="content">  SubType : {{Karakterlijst[activeKarakter].Subtype}}  </div> 
+        <div class="content"> {{Karakterlijst[activeKarakter].Omschrijving}} </div>
+        <button (click)="switchEditMode()" class="button" > Wijzigmodus </button>
+    </div>
+</div>
+
+
+<div class="contentContainer" *ngIf="editMode"> 
+    <form name="karakterEdit" (ngSubmit)="editKarakter()">
+        <div class="contentFat"> Naam:  </div>
+        <div class="content">  <input type="text" value="{{karakterModel.Naam}}" class="contentInput" 
+            [(ngModel)]="karakterModel.Naam" name="karakterNaam"> </div>
+        
+        <div class="contentFat"> HoofdType: </div>
+        <div class="content"> <input type="text" value="{{karakterModel.Hoofdtype}}}" class="contentInput" 
+            [(ngModel)]="karakterModel.Hoofdtype" name="karakterHoofdType"></div>
+        
+        <div class="contentFat"> Subtype: </div>
+        <div class="content"> <input type="text" value="{{karakterModel.Subtype}}}" class="contentInput" 
+            [(ngModel)]="karakterModel.Subtype" name="karakterSubType"> </div>
+
+        <div class="contentFat"> Beschrijving: </div>
+        <div class="content"> <input type="text" value="{{karakterModel.Omschrijving}}" 
+            class="contentInput" [(ngModel)]="karakterModel.Omschrijving" name="karakterOmschrijving"></div>
+        
+        <div class="contentFat"> Tags: </div>
+        <div class="content"> <input type="text" value="karakterModel.Tags" 
+            class="contentInput" [(ngModel)]="karakterModel.Tags" name="karakterTags"></div>
+        
+        <button class="button" type="submit"> Opslaan </button><button (click)="switchEditMode()" class="button"> Wijzigmodus sluiten </button>
+    </form>
+</div>
+
