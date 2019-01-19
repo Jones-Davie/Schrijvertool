@@ -69,12 +69,12 @@ app.post('/karakters/nieuw', (req, res) => {
     
     app.post('/karakters', (req, res) => {
 
-        var karakterUpdate = {IDKarakter: req.body.IDKarakter, Naam: req.body.Naam, Hoofdtype: req.body.Hoofdtype, Subtype: req.body.Subtype, Omschrijving: req.body.Omschrijving, Tags: req.body.Tags};
-        console.log("edit table check naam: " + req.body.Naam)
+        var karakterUpdate = { IDKarakters: req.body.IDKarakters, Naam: req.body.Naam, Hoofdtype: req.body.Hoofdtype, Subtype: req.body.Subtype, Omschrijving: req.body.Omschrijving, Tags: req.body.Tags};
+        console.log("edit table check id: " + req.body.IDKarakters)
         var connection = createMyConnection();
     
         connection.connect()
-        connection.query("UPDATE Karakters SET Naam= ?, HoofdType= ?, Subtype= ?, Omschrijving= ?, Tags=? WHERE Naam = ?", [req.body.Naam, req.body.Hoofdtype, req.body.Subtype, req.body.Omschrijving, req.body.Tags] , function (err, rows, fields) {
+        connection.query("UPDATE Karakters SET Naam= ?, HoofdType= ?, Subtype= ?, Omschrijving= ?, Tags=? WHERE IDKarakters = ?", [req.body.Naam, req.body.Hoofdtype, req.body.Subtype, req.body.Omschrijving, req.body.Tags, req.body.IDKarakters] , function (err, rows, fields) {
             if(err)
             console.log(err)
             res.send(JSON.stringify(rows))

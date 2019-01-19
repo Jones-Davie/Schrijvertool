@@ -1,4 +1,4 @@
-export class Karaktermodel {
+export class Karaktermodelnieuw {
     constructor (
 
         public Naam: string,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuitemService } from '../../menuitemservice/menuitem.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Karaktermodel } from '../../Entryclass/Karaktermodel';
+import { Karaktermodelnieuw } from '../../Entryclass/Karaktermodelnieuw'
 import { delay } from 'q';
 
 @Component({
@@ -27,6 +28,7 @@ export class KaraktersComponent implements OnInit {
   private viewMode = true
   private creationMode = false
   private karakterModel
+  private karakterModelnieuw
 
   //haal de karakters op uit het karakterbestand
   getKarakters(): void {
@@ -55,7 +57,7 @@ export class KaraktersComponent implements OnInit {
 
   //open formulier om karakter te maken
   switchCreationMode() {
-    this.karakterModel = new Karaktermodel ('','','','','')
+    this.karakterModel = new Karaktermodelnieuw ('','','','','')
     this.editMode = false
     this.viewMode = false
     this.creationMode = true
@@ -84,13 +86,12 @@ export class KaraktersComponent implements OnInit {
     }
 
     this.karakterModel = this.Karakterlijst[this.activeKarakter]
-
   }
 
   //voeg karakter toe
   async saveKarakter() {
-    console.log(this.karakterModel.Naam)
-    this.menuService.saveKarakter(this.karakterModel).subscribe()
+    console.log(this.karakterModelnieuw.Naam)
+    this.menuService.saveKarakter(this.karakterModelnieuw).subscribe()
     
     await delay(300) //roep delay functie aan zodat database bijgewerkt kan worden
     
