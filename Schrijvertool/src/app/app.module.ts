@@ -11,7 +11,7 @@ import { WezensComponent } from './menuitems/wezens/wezens.component';
 import { OverzichtComponent } from './overzicht/overzicht.component';
 
 import { FormsModule } from '@angular/forms';
-import { NieuwkarakterComponent } from './nieuwkarakter/nieuwkarakter.component';
+import { NieuwkarakterComponent } from './menuitems/nieuwkarakter/nieuwkarakter.component';
 
 @NgModule({
   declarations: [

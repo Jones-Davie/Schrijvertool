@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { KaraktersComponent } from './menuitems/karakters/karakters.component';
 import { WezensComponent } from './menuitems/wezens/wezens.component';
 import { OverzichtComponent } from './overzicht/overzicht.component'
-import { NieuwkarakterComponent } from './nieuwkarakter/nieuwkarakter.component';
+import { NieuwkarakterComponent } from './menuitems/nieuwkarakter/nieuwkarakter.component';
 
 const routes: Routes = [ {
   path: '',

@@ -14,7 +14,12 @@ export class MenuitemService {
 
   getKarakters() {
     return this.http.get('http://localhost:3000/karakters');
+  }
+
+  getKaraktersNieuw() {
+    return this.http.get('http://localhost:3000/karakters/nieuw');
 }
+
 
 saveKarakter( Karaktermodel: Karaktermodel) {
   return this.http.post('http://localhost:3000/karakters/nieuw', Karaktermodel);

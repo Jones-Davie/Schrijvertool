@@ -27,26 +27,19 @@ export class SidebarComponent implements OnInit {
   private checkSlash
 
   initSidebar() {
-    
-    
-    
     this.sidebarEntry = window.location.pathname
     this.sidebarEntry = this.sidebarEntry.substring(1)
     this.sidebarEntry = this.sidebarEntry.charAt(0).toUpperCase() + this.sidebarEntry.slice(1);
 
     if (this.sidebarEntry.includes("/") == true){
       this.checkSlash = this.sidebarEntry.indexOf('/')
-      console.log(this.checkSlash)
-      this.checkSlash = this.sidebarEntry.length - this.checkSlash 
-      this.sidebarEntry.slice(-this.checkSlash)
+      this.checkSlash = this.sidebarEntry.length - this.checkSlash
+      this.sidebarEntry = this.sidebarEntry.substring(0, this.sidebarEntry.length-this.checkSlash)
     }
     
-    console.log(this.sidebarEntry + " init active item")
-
     this.activeItem = document.getElementById(this.sidebarEntry)
     this.activeItem.className = "active"
     
-
   }
 
 

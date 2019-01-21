@@ -2,7 +2,7 @@
     <nav *ngIf="Karakterlijst">
         <ul>
             <li>
-                <div id="nieuwKarakter" class="ïnactive" (click)="switchCreationMode()"><a [routerLink]="['./nieuw']"> Nieuw Karakter </a></div>
+                <div id="nieuwKarakter" class="ïnactive" ><a [routerLink]="['./nieuw']"> Nieuw Karakter </a></div>
             </li>
             <li *ngFor="let karakter of Karakterlijst; let i = index">
                 <div id="Karakter{{i}}" class="inactive" (click)="getKarakter(i)"> <a [routerLink]=" ['./'] "> {{Karakterlijst[i].Naam}} </a></div>

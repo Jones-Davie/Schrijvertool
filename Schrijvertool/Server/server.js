@@ -44,6 +44,26 @@ app.get('/karakters', (req, res) => {
     connection.end()
 })
 
+
+app.get('/karakters/nieuw', (req, res) => {
+    
+    console.log("karakters/nieuw")
+    var connection = createMyConnection();
+    
+    connection.connect()
+
+    connection.query('select * from karakters', function (err, rows, fields) {
+
+        console.log(err)
+        console.log(JSON.stringify(rows))
+        res.send(JSON.stringify(rows))
+        console.log( "server reached: get karakters")
+    })
+
+    connection.end()
+})
+
+
 app.post('/karakters/nieuw', (req, res) => {
     
     var connection = createMyConnection();
@@ -51,6 +71,7 @@ app.post('/karakters/nieuw', (req, res) => {
     connection.connect()
 
         console.log(req.body)
+        console.log("saving charakter")
     
         connection.query('INSERT INTO Karakters set ?', req.body, function (err, rows, fields) {
                 console.log(err)

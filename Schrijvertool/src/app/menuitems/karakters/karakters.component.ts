@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MenuitemService } from '../../menuitemservice/menuitem.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Karaktermodel } from '../../Entryclass/Karaktermodel';
-import { Karaktermodelnieuw } from '../../Entryclass/Karaktermodelnieuw'
 import { delay } from 'q';
 
 @Component({
@@ -26,7 +25,6 @@ export class KaraktersComponent implements OnInit {
   private showKarakter = false
   private editMode = false
   private viewMode = true
-  private creationMode = false
   private karakterModel
   private karakterModelnieuw
 
@@ -39,11 +37,6 @@ export class KaraktersComponent implements OnInit {
   //kijk welk karakter nu actief is en geef deze weer in de html
   getKarakter(selectedKarakter) {
     
-    if (this.creationMode == true) {
-      this.creationMode = false
-      this.viewMode = true
-    }
-
     this.activeKarakter = selectedKarakter
 
     if (this.activeItem != null) {
@@ -54,22 +47,6 @@ export class KaraktersComponent implements OnInit {
       this.activeItem.className = "active"
       this.showKarakter=true
   }
-
-  //open formulier om karakter te maken
-  switchCreationMode() {
-    this.karakterModel = new Karaktermodelnieuw ('','','','','')
-    this.editMode = false
-    this.viewMode = false
-    this.creationMode = true
-    
-    if (this.activeItem != null) {
-      this.activeItem.className="inactive"
-      }
-    
-    this.activeItem = document.getElementById("nieuwKarakter")
-    this.activeItem.className = "active"
-  }
-
 
   //kijk of de gebruiker wil aanpassen of niet, switch tussen edit en normal mode
   switchEditMode() {
