@@ -37,6 +37,12 @@ export class KaraktersComponent implements OnInit {
   //kijk welk karakter nu actief is en geef deze weer in de html
   getKarakter(selectedKarakter) {
     
+    if (this.editMode == true) {
+      
+      this.editMode = false
+      this.viewMode = true
+    }
+
     this.activeKarakter = selectedKarakter
 
     if (this.activeItem != null) {
@@ -63,16 +69,6 @@ export class KaraktersComponent implements OnInit {
     }
 
     this.karakterModel = this.Karakterlijst[this.activeKarakter]
-  }
-
-  //voeg karakter toe
-  async saveKarakter() {
-    console.log(this.karakterModelnieuw.Naam)
-    this.menuService.saveKarakter(this.karakterModelnieuw).subscribe()
-    
-    await delay(300) //roep delay functie aan zodat database bijgewerkt kan worden
-    
-    this.getKarakters()
   }
 
   //wacht x miliseconden om te zorgen dat de functie later uit wordt gevoerd
