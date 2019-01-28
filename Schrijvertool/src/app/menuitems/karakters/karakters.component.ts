@@ -87,4 +87,16 @@ export class KaraktersComponent implements OnInit {
     this.getKarakters()
 
    }
+
+   async deleteKarakter( Naam ) {
+    console.log('test edit karakter.naam: ' + Naam)
+    this.editMode = false
+    this.viewMode = true
+    this.menuService.deleteKarakter(this.karakterModel.Naam).subscribe()
+    
+    await delay(300)
+
+    this.getKarakters()
+     
+   }
 }

@@ -48,7 +48,9 @@
         <div class="content"> <input type="text" value="karakterModel.Tags" 
             class="contentInput" [(ngModel)]="karakterModel.Tags" name="karakterTags"></div>
         
-        <button class="button" type="submit"> Opslaan </button><button (click)="switchEditMode()" class="button"> Wijzigmodus sluiten </button>
+        <button class="button" type="submit"> Opslaan </button>
+        <button (click)="switchEditMode()" class="button"> Wijzigmodus sluiten </button>
+        <button (click)="deleteKarakter(karakterModel.Naam)" class="button"> Karakter verwijderen </button>
     </form>
 </div>
 

@@ -25,10 +25,12 @@ saveKarakter( Karaktermodel: Karaktermodel) {
   return this.http.post('http://localhost:3000/karakters/nieuw', Karaktermodel);
 }
 
+deleteKarakter( karakterNaam) {
+  console.log("reached: delete Karakter " + karakterNaam)
+  return this.http.delete('http://localhost:3000/karakters/' + karakterNaam);
+}
+
 editKarakter(Karaktermodel:Karaktermodel) {
-  console.log('reached: edit Karakter')
-  console.log( 'test Karaktermodel: ' + Karaktermodel)
-  console.log( 'test karakternaam: ' + Karaktermodel.Naam)
   return this.http.post('http://localhost:3000/karakters', Karaktermodel)
 }
 

@@ -26,6 +26,20 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.all("/*", function (req, res, next) {
+
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
+    res.header("Access-Control-Allow-Credentials",true);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Accept,X-Access-Token,X-Key,Authorization,X-Requested-With,Origin,Access-Control-Allow-Origin,Access-Control-Allow-Credentials');
+    if (req.method === 'OPTIONS') {
+      res.status(200).end();
+    } else {
+      next();
+    }
+  });
+
+
 
 app.get('/karakters', (req, res) => {
     
@@ -94,6 +108,20 @@ app.post('/karakters/nieuw', (req, res) => {
         })
         
         connection.end()
+    })
+
+    app.delete('/karakters/:karakterNaam', (req, res) => {
+
+        connection.connect()
+        console.log(req.params)
+    
+        connection.query('DELETE FROM users WHERE userName = ?', req.params.karakterNaam, function (err, rows, fields) {
+                console.log(err)
+        })
+        console.log("Delete uitgevoerd")
+        
+        res.status(200).end()
+    
     })
 
 app.use(express.static('public'));
