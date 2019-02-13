@@ -30,7 +30,8 @@ if($result = mysqli_query($conn,$sql))
     $cr++;
   }
     
-  echo json_encode(['data'=>$cars]);
+  echo json_encode([$karakters]);
+  return json_encode([$karakters]);
 }
 else
 {
