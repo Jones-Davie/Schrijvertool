@@ -13,7 +13,7 @@ export class MenuitemService {
   constructor( private http : HttpClient) { }
 
   getKarakters() {
-    return this.http.get('http://localhost:3000/karakters');
+    return this.http.get('http://testomgeving.daviefaulhaber.nl/karakters.php/');
   }
 
   getKaraktersNieuw() {
