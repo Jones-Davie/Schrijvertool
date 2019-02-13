@@ -13,22 +13,29 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$karakters = [];
 $sql = "SELECT * FROM Karakters";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    $rows = array();
-   while($r = mysql_fetch_assoc($result)) {
-     $rows['object_name'][] = $r;
-   }
-
- return json_encode($rows);
-
-} else {
-    echo "0 results";
+if($result = mysqli_query($conn,$sql))
+{
+  $cr = 0;
+  while($row = mysqli_fetch_assoc($result))
+  {
+    $karakters[$cr]['Naam']    = $row['Naam'];
+    $karakters[$cr]['Hoofdtype'] = $row['Hoofdtype'];
+    $karakters[$cr]['Subtype'] = $row['Subtype'];
+    $karakters[$cr]['Omschrijving'] = $row['Omschrijving'];
+    $karakters[$cr]['Tags'] = $row['Tags'];
+    $cr++;
+  }
+    
+  echo json_encode(['data'=>$cars]);
 }
-$conn->close();
+else
+{
+  http_response_code(404);
+}
 
 ?>
 

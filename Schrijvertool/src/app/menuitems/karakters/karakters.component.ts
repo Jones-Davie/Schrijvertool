@@ -32,6 +32,9 @@ export class KaraktersComponent implements OnInit {
   getKarakters(): void {
     this.menuService.getKarakters().
     subscribe(karakters1 => this.Karakterlijst = karakters1)
+    console.log(this.Karakterlijst)
+    console.log(this.Karakterlijst[1])
+    console.log(this.Karakterlijst[1].Naam)
   }
 
   //kijk welk karakter nu actief is en geef deze weer in de html
