@@ -12,6 +12,10 @@ import { delay } from 'q';
 
 export class KaraktersComponent implements OnInit {
 
+  karakters: Karaktermodel[];
+  error = '';
+  success = '';
+
   constructor(
     private menuService : MenuitemService,
     private http:HttpClient) { }
@@ -30,12 +34,24 @@ export class KaraktersComponent implements OnInit {
 
   //haal de karakters op uit het karakterbestand
   getKarakters(): void {
+    this.menuService.getKarakters().subscribe(
+      (res: Karaktermodel[]) => {
+        this.karakters = res;
+      },
+      (err) => {
+        this.error = err;
+      }
+    );
+  }
+
+
+ /* getKarakters(): void {
     this.menuService.getKarakters().
     subscribe(karakters1 => this.Karakterlijst = karakters1)
     console.log(this.Karakterlijst)
     console.log(this.Karakterlijst[1])
     console.log(this.Karakterlijst[1].Naam)
-  }
+  } */
 
   //kijk welk karakter nu actief is en geef deze weer in de html
   getKarakter(selectedKarakter) {

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { Entryclass} from '../Entryclass/Entryclass';
 import { Karaktermodel } from '../Entryclass/Karaktermodel';
 import { Wezensclassexample } from '../Entryclass/Wezensclassexample';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,30 @@ export class MenuitemService {
 
   constructor( private http : HttpClient) { }
 
-  getKarakters() {
+  baseUrl = 'http://testomgeving.daviefaulhaber.nl/karakters.php/'
+  karakters: Karaktermodel[]
+
+  private handleError(error: HttpErrorResponse) {
+    console.log(error);
+   
+    // return an observable with a user friendly message
+    return throwError('Error! something went wrong.');
+  }
+
+  /*getKarakters() {
     return this.http.get('http://testomgeving.daviefaulhaber.nl/karakters.php/');
+  }*/
+
+  getKarakters(): Observable<Karaktermodel[]> {
+    return this.http.get(this.baseUrl).pipe(
+      map((res) => {
+        this.karakters = res['data']
+        console.log(this.karakters)
+        console.log(this.karakters[1])
+        console.log(this.karakters[1].Naam)
+        return this.karakters
+    }),
+    catchError(this.handleError));
   }
 
   getKaraktersNieuw() {
