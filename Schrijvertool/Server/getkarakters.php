@@ -1,9 +1,9 @@
 <?php
 
-$servername = "mysql1324int.cp.hostnet.nl";
-$username = "u336264_admin";
-$password = "Fly1ngDutma4n;";
-$dbname = "db336264_Schrijvertool";
+$servername = "";
+$username = "";
+$password = "";
+$dbname = "";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

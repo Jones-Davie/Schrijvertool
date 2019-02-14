@@ -13,7 +13,7 @@ export class MenuitemService {
 
   constructor( private http : HttpClient) { }
 
-  baseUrl = 'http://testomgeving.daviefaulhaber.nl/karakters.php/'
+  baseUrl = 'http://testomgeving.daviefaulhaber.nl/getkarakters'
   karakters: Karaktermodel[]
 
   private handleError(error: HttpErrorResponse) {
